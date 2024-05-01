@@ -40,6 +40,12 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
+# jetbrains rider
+.idea/
+
+# visual code
+.vscode/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
