@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyIdentityApi.Api.Infrastructure;
 using MyIdentityApi.Domain.Aggregates.UserAggregate;
 using MyIdentityApi.Infrastructure;
 
@@ -13,6 +14,7 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
     .AddEntityFrameworkStores<MyIdentityApiDbContext>();
 
 // Add services to the container.
+builder.Services.AddMediator();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
