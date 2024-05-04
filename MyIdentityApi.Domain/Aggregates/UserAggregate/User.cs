@@ -4,6 +4,7 @@ namespace MyIdentityApi.Domain.Aggregates.UserAggregate;
 
 public class User : IdentityUser
 {
+    public User(){}
     public string FirstName { get; private set; }
 
     public string LastName { get; private set; }

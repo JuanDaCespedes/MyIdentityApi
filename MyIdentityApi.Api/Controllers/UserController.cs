@@ -15,8 +15,22 @@ public class UserController(IMediator mediator) : MyIdentityApiController
     {
         try
         {
-            await _mediator.Send(body);
-            return Ok();
+            return Ok(await _mediator.Send(body));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "An error occurred while processing your request.");
+        }
+    }
+    
+    [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> LoginUser([FromBody] LoginUserCommand body)
+    {
+        try
+        {
+            return Ok(await _mediator.Send(body));
         }
         catch (Exception ex)
         {
