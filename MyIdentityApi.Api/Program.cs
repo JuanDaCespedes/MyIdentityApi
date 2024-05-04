@@ -1,20 +1,11 @@
-using Microsoft.EntityFrameworkCore;
 using MyIdentityApi.Api.Infrastructure;
-using MyIdentityApi.Domain.Aggregates.UserAggregate;
-using MyIdentityApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Asegúrate de que la cadena de conexión está correcta y accesible
-builder.Services.AddDbContext<MyIdentityApiDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Configura Identity para usar tu clase User extendida
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<MyIdentityApiDbContext>();
-
 // Add services to the container.
 builder.Services.AddMediator();
+builder.Services.AddIdentityConfiguration(builder.Configuration);
+builder.Services.AddRepositories();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
