@@ -4,6 +4,7 @@ using MyIdentityApi.Api.Application.Commands.UserCommands;
 
 namespace MyIdentityApi.Api.Controllers;
 
+[Route("api/[controller]")]
 public class UserController(IMediator mediator) : MyIdentityApiController
 {
     private readonly IMediator _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
